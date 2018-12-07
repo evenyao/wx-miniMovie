@@ -1,7 +1,7 @@
 {
   "usingComponents": {
-    "component_car": "/pages/component/car/car",
     "component_main": "/pages/component/main/main",
+    "component_us": "/pages/component/us/us",
     "component_my": "/pages/component/my/my"
   }
 }

@@ -3,7 +3,7 @@
   <component_main/>
 </view>
 <view hidden="{{currentTab == 1? false: true}}">
-  <component_car/>
+  <component_us/>
 </view>
 <view hidden="{{currentTab == 2? false: true}}">
   <component_my/>

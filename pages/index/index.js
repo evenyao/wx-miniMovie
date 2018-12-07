@@ -7,12 +7,12 @@ Page({
       {
         "iconPath": "/pages/img/index2.png",
         "selectedIconPath": "/pages/img/index1.png",
-        "text": "首页"
+        "text": "榜单"
       },
       {
-        "iconPath": "/pages/img/car2.png",
-        "selectedIconPath": "/pages/img/car1.png",
-        "text": "购物车"
+        "iconPath": "/pages/img/us2.png",
+        "selectedIconPath": "/pages/img/us1.png",
+        "text": "北美"
       },
       {
         "iconPath": "/pages/img/my2.png",
