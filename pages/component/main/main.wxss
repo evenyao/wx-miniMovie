@@ -1,0 +1,28 @@
+.item {
+  margin: 0 20rpx;
+  border-bottom: 1rpx solid #ccc;
+  padding: 20rpx 0;
+}
+.item .link {
+  display: flex;
+}
+.item .cover,
+.item .cover .img {
+  width: 168rpx;
+  height: 252rpx;
+}
+.item .detail {
+  flex: 1;
+  padding-left: 20rpx;
+}
+.item .detail .name {
+  font-size: 30rpx;
+}
+.item .detail .extra {
+  color: #999;
+  margin-top: 4rpx;
+  font-size: 28rpx;
+}
+.item .detail .score {
+  color: #ff5722;
+}

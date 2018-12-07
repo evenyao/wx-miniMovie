@@ -17,13 +17,13 @@ Component({
 
   /* 组件的初始数据 */
   data: {
-    
+    dataList: [],
   },
 
   /* 组件声明周期函数 */
   lifetimes: {
     attached: function () {
-   
+      this.getUsData()
     },
     moved: function () { 
 
@@ -35,7 +35,9 @@ Component({
 
   /* 组件的方法列表 */
   methods: {
-
+    getUsData(){
+      
+    }
   }
   
 })

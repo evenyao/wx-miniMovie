@@ -1,6 +1,6 @@
 <!-- 组件显示 -->
 <view hidden="{{currentTab == 0? false: true}}">
-  <component_index/>
+  <component_main/>
 </view>
 <view hidden="{{currentTab == 1? false: true}}">
   <component_car/>

@@ -1,0 +1,5 @@
+<template name='diyNavigationBar'>
+  <view class="navigationbar-wrapper">
+    <view class="content">Nav</view>
+  </view>
+</template>

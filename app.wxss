@@ -16,3 +16,14 @@
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+.waiting_img {
+    width: 100%;
+    text-align: center;
+}
+
+.waiting_img image {
+    width: 31px !important;
+    height: 31px !important;
+    margin-top: 30rpx;
+}
