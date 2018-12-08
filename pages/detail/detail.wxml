@@ -1,0 +1,84 @@
+<!--pages/detail/detail.wxml-->
+<view class="wrapper" wx:if="{{main}}">
+  <view class="movie-name">{{info[id].title}}</view>
+
+  <view class="detail">
+    <view class="info">
+      <view class="comment">
+        <view class="stars-point">
+          <template is="zerostar" wx:if="{{info[id].rating.average == 0}}"></template>
+          <template is="halfstar" wx:if="{{info[id].rating.average > 0 && info[id].rating.average <= 1}}"></template>  
+          <template is="onestar"  wx:if="{{info[id].rating.average > 1 && info[id].rating.average <= 2}}"></template>  
+          <template is="onehalfstar" wx:if="{{info[id].rating.average > 2 && info[id].rating.average <= 3}}"></template>  
+          <template is="twostar" wx:if="{{info[id].rating.average > 3 && info[id].rating.average <= 4}}"></template>  
+          <template is="twohalfstar" wx:if="{{info[id].rating.average > 4 && info[id].rating.average <= 5}}"></template>  
+          <template is="threestar" wx:if="{{info[id].rating.average > 5 && info[id].rating.average <= 6}}"></template>  
+          <template is="threehalfstar" wx:if="{{info[id].rating.average > 6 && info[id].rating.average <= 7}}"></template>  
+          <template is="fourstar" wx:if="{{info[id].rating.average > 7 && info[id].rating.average <= 8}}"></template>
+          <template is="fourhalfstar" wx:if="{{info[id].rating.average > 8 && info[id].rating.average <= 9}}"></template>  
+          <template is="fivestar" wx:if="{{info[id].rating.average > 9 && info[id].rating.average <= 10}}"></template>      
+        </view>
+        <view class="point">{{info[id].rating.average}}</view>
+        <view class="comment-number">{{info[id].collect_count}} 评价</view>
+      </view>
+
+      <view class="member-info">
+        <text>{{info[id].durations}}</text> / <text wx:for="{{info[id].directors}}" wx:key="{{item}}">{{item.name}}(导演) / </text>
+        <text wx:for="{{info[id].casts}}" wx:key="{{item}}"> {{item.name}} /</text>
+        <text> {{info[id].year}}年</text>
+      </view>
+    </view>
+
+    <view class="cover">
+      <image class="img" src="{{info[id].images.small}}"></image> 
+    </view> 
+  </view>
+</view>
+
+<view class="wrapper" wx:if="{{us}}">
+  <view class="movie-name">{{info.title}}</view>
+
+  <view class="detail">
+    <view class="info">
+      <view class="comment">
+        <view class="stars-point">
+          <template is="zerostar" wx:if="{{info.rating.average == 0}}"></template>
+          <template is="halfstar" wx:if="{{info.rating.average > 0 && info.rating.average <= 1}}"></template>  
+          <template is="onestar"  wx:if="{{info.rating.average > 1 && info.rating.average <= 2}}"></template>  
+          <template is="onehalfstar" wx:if="{{info.rating.average > 2 && info.rating.average <= 3}}"></template>  
+          <template is="twostar" wx:if="{{info.rating.average > 3 && info.rating.average <= 4}}"></template>  
+          <template is="twohalfstar" wx:if="{{info.rating.average > 4 && info.rating.average <= 5}}"></template>  
+          <template is="threestar" wx:if="{{info.rating.average > 5 && info.rating.average <= 6}}"></template>  
+          <template is="threehalfstar" wx:if="{{info.rating.average > 6 && info.rating.average <= 7}}"></template>  
+          <template is="fourstar" wx:if="{{info.rating.average > 7 && info.rating.average <= 8}}"></template>
+          <template is="fourhalfstar" wx:if="{{info.rating.average > 8 && info.rating.average <= 9}}"></template>  
+          <template is="fivestar" wx:if="{{info.rating.average > 9 && info.rating.average <= 10}}"></template>      
+        </view>
+        <view class="point">{{info.rating.average}}</view>
+        <view class="comment-number">{{info.collect_count}} 评价</view>
+      </view>
+
+      <view class="member-info">
+        <text>{{info.durations}}</text> / <text wx:for="{{info.directors}}" wx:key="{{item}}">{{item.name}}(导演) / </text>
+        <text wx:for="{{info[id].casts}}" wx:key="{{item}}"> {{item.name}} /</text>
+        <text> {{info.year}}年</text>
+      </view>
+    </view>
+
+    <view class="cover">
+      <image class="img" src="{{info.images.small}}"></image> 
+    </view> 
+  </view>
+</view>
+
+<import src="/pages/template/comment-star/zero-star/zero-star.wxml"/>
+<import src="/pages/template/comment-star/half-star/half-star.wxml"/>
+<import src="/pages/template/comment-star/one-star/one-star.wxml"/>
+<import src="/pages/template/comment-star/one-half-star/one-half-star.wxml"/>
+<import src="/pages/template/comment-star/two-star/two-star.wxml"/>
+<import src="/pages/template/comment-star/two-half-star/two-half-star.wxml"/>
+<import src="/pages/template/comment-star/three-star/three-star.wxml"/>
+<import src="/pages/template/comment-star/three-half-star/three-half-star.wxml"/>
+<import src="/pages/template/comment-star/four-star/four-star.wxml"/>
+<import src="/pages/template/comment-star/four-half-star/four-half-star.wxml"/>
+<import src="/pages/template/comment-star/five-star/five-star.wxml"/>

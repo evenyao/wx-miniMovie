@@ -1,6 +1,7 @@
 <scroll-view class="content" scroll-y style='height:{{main_height}}px;' bindscrolltolower='scrollDown'>
   <view class="item" wx:for="{{dataList}}" wx:key="{{item}}">
-    <navigator class="link" url="/pages/link/link?url={{item.alt}}">
+    <!-- <navigator class="link" url="/pages/link/link?url={{item.alt}}"> -->
+    <navigator class="link" url="/pages/detail/detail?main=main&info={{listDetailValue}}&id={{index}}">
       <view class="cover">
         <image class="img" src="{{item.images.small}}" alt="cover"></image>
       </view>

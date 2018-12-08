@@ -50,10 +50,12 @@ Component({
         success: function (res) {
           console.log(res)
           let list = res.data.subjects
+          let listDetailValue = JSON.stringify(list)  // JSON 格式化
           if (res.statusCode == 200) {
             console.log(list)
             that.setData({
-              dataList: list
+              dataList: list,
+              listDetailValue,  // 传递给详情页的值
             })
           }
         },

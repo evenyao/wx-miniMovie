@@ -1,0 +1,7 @@
+<template name="twostar">
+  <image class="star" src="/pages/img/full.png"></image>
+  <image class="star" src="/pages/img/full.png"></image>
+  <image class="star" src="/pages/img/null.png"></image>
+  <image class="star" src="/pages/img/null.png"></image>
+  <image class="star" src="/pages/img/null.png"></image>
+</template>

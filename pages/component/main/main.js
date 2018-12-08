@@ -1,4 +1,3 @@
-var app = getApp();
 
 Component({
 
@@ -73,8 +72,10 @@ Component({
           let list = res.data.subjects
           if (res.statusCode == 200) {
             console.log(list)
+            let listDetailValue = JSON.stringify(list)  // JSON 格式化
             that.setData({
               dataList: list,
+              listDetailValue,  // 传递给详情页的值
               content_waiting_show: true,
               count: 11  // 增加数目
             })
@@ -109,11 +110,13 @@ Component({
             if (res.statusCode == 200) {
               console.log(res)
               let tempData = that.data.dataList.concat(res.data.subjects);
+              let listDetailValue = JSON.stringify(tempData) // JSON 格式化
               that.setData({
                 count: that.data.count + 11,
                 dataList: tempData,
+                listDetailValue,  // 传递给详情页的值
                 loadFlag: tempData.length >= parseInt(res.count) ? false : true,
-                pull_loading: false
+                pull_loading: false,
               })
               console.log(that.data.dataList)
             }

@@ -1,0 +1,7 @@
+<template name="halfstar">
+  <image class="star" src="/pages/img/half.png"></image>
+  <image class="star" src="/pages/img/null.png"></image>
+  <image class="star" src="/pages/img/null.png"></image>
+  <image class="star" src="/pages/img/null.png"></image>
+  <image class="star" src="/pages/img/null.png"></image>
+</template>

@@ -1,0 +1,7 @@
+<template name="zerostar">
+  <image class="star" src="/pages/img/null.png"></image>
+  <image class="star" src="/pages/img/null.png"></image>
+  <image class="star" src="/pages/img/null.png"></image>
+  <image class="star" src="/pages/img/null.png"></image>
+  <image class="star" src="/pages/img/null.png"></image>
+</template>

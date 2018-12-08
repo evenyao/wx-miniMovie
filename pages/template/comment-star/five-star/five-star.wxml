@@ -1,0 +1,7 @@
+<template name="fivestar">
+  <image class="star" src="/pages/img/full.png"></image>
+  <image class="star" src="/pages/img/full.png"></image>
+  <image class="star" src="/pages/img/full.png"></image>
+  <image class="star" src="/pages/img/full.png"></image>
+  <image class="star" src="/pages/img/full.png"></image>
+</template>
