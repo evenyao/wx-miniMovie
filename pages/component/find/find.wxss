@@ -1,0 +1,33 @@
+.search-area {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid #ddd;
+}
+.search-area input {
+  width: calc(100% - 150rpx);
+  padding: 16rpx;
+  background: #eee;
+  border: none;
+  border-radius: 8rpx;
+  box-shadow: none;
+  outline: none;
+  font-size: 28rpx;
+}
+.search-area .button {
+  position: absolute;
+  right: 0;
+  padding: 20rpx 30rpx 20rpx 30rpx;
+  background: #ff5722;
+  color: #fff;
+  font-size: 28rpx;
+  font-weight: bold;
+  border-radius: 8rpx;
+}
+
+.waiting_img {
+  position: relative;
+  top: -30rpx;
+}

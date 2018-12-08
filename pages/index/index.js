@@ -15,9 +15,9 @@ Page({
         "text": "北美"
       },
       {
-        "iconPath": "/pages/img/my2.png",
-        "selectedIconPath": "/pages/img/my1.png",
-        "text": "我的"
+        "iconPath": "/pages/img/find2.png",
+        "selectedIconPath": "/pages/img/find1.png",
+        "text": "查找"
       }
     ]
   },

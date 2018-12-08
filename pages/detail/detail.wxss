@@ -1,18 +1,21 @@
 /* pages/detail/detail.wxss */
 .movie-name {
   font-size: 50rpx;
-  padding: 30rpx 30rpx 0 30rpx;
+  padding: 30rpx;
 }
 
 .point {
   font-size: 40rpx;
   color: #ff5722;
 }
-
+.comment {
+  margin-bottom: 20rpx;
+}
 .comment .stars-point {
   display: flex;
   flex-direction: row;
   vertical-align: middle;
+  padding-bottom: 10rpx;
 }
 .comment .star {
   width: 28rpx;
@@ -30,8 +33,8 @@
 }
 
 .cover {
-  width: 200rpx;
-  height: 300rpx;
+  width: 240rpx;
+  height: 360rpx;
 }
 .cover .img {
   width: 100%;

@@ -1,0 +1,7 @@
+<view class="search-area">
+  <input type="text" placeholder="搜索电影" /><view class="button"> Go</view>
+</view>
+
+<view class="waiting_img" wx:if="{{true}}">
+  <image src="/pages/img/loading.gif"></image>
+</view>

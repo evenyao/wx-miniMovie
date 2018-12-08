@@ -25,7 +25,7 @@
       <view class="member-info">
         <text>{{info[id].durations}}</text> / <text wx:for="{{info[id].directors}}" wx:key="{{item}}">{{item.name}}(导演) / </text>
         <text wx:for="{{info[id].casts}}" wx:key="{{item}}"> {{item.name}} /</text>
-        <text> {{info[id].year}}年</text>
+        <text> {{info[id].pubdates}}</text>
       </view>
     </view>
 
@@ -61,7 +61,7 @@
       <view class="member-info">
         <text>{{info.durations}}</text> / <text wx:for="{{info.directors}}" wx:key="{{item}}">{{item.name}}(导演) / </text>
         <text wx:for="{{info[id].casts}}" wx:key="{{item}}"> {{item.name}} /</text>
-        <text> {{info.year}}年</text>
+        <text> {{info.pubdates}}</text>
       </view>
     </view>
 
