@@ -25,4 +25,7 @@
   </view>
 </view>
 
+<view class="warn" wx:if="{{show_buttom}}">没有更多电影啦~</view>
+<view class="cleanbox"></view>
+
   
