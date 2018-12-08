@@ -2,6 +2,7 @@
 
 var main
 var us
+var find
 
 Page({
 
@@ -11,6 +12,7 @@ Page({
   data: {
     main,
     us,
+    find
   },
 
   /**
@@ -36,6 +38,16 @@ Page({
         info,
         id,
         us: 1,
+      })
+    }
+    //
+    if (options.find) {
+      let info = JSON.parse(options.info)
+      let id = options.id
+      this.setData({
+        info,
+        id,
+        find: 1,
       })
     }
     console.log(this.data.info)

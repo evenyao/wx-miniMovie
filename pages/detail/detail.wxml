@@ -1,5 +1,5 @@
 <!--pages/detail/detail.wxml-->
-<view class="wrapper" wx:if="{{main}}">
+<view class="wrapper" wx:if="{{main||find}}">
   <view class="movie-name">{{info[id].title}}</view>
 
   <view class="detail">

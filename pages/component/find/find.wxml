@@ -1,7 +1,28 @@
 <view class="search-area">
-  <input type="text" placeholder="搜索电影" /><view class="button"> Go</view>
+  <input type="text" value="{{search_value}}" bindinput="changeValue" placeholder="搜索电影" />
+  <view class="button" bindtap="search">Go</view>
 </view>
 
-<view class="waiting_img" wx:if="{{true}}">
+<view class="waiting_img" wx:if="{{loading}}">
   <image src="/pages/img/loading.gif"></image>
 </view>
+
+<view class="search_result">
+  <view class="item" wx:for="{{dataList}}" wx:key="{{item}}">
+    <!-- <navigator class="link" url="/pages/link/link?url={{item.alt}}"> -->
+    <navigator class="link" url="/pages/detail/detail?find=find&info={{listDetailValue}}&id={{index}}">
+      <view class="cover">
+        <image class="img" src="{{item.images.small}}" alt="cover"></image>
+      </view>
+      <view class="detail">
+        <view class="name">{{item.title}}</view>
+        <view class="extra"><text class="score">{{item.rating.average}}</text>分 / <text class="collect">{{item.collect_count}}</text>收藏</view>
+        <view class="extra"><text class="year">{{item.year}}</text> / <text class="type" wx:for="{{item.genres}}" wx:key="{{item}}">{{item}} </text></view>
+        <view class="extra">导演：<text class="director" wx:for="{{item.directors}}" wx:key="{{item}}">{{item.name}}</text></view>
+        <view class="extra">主演：<text class="actor" wx:for="{{item.casts}}" wx:key="{{item}}">{{item.name}} </text></view>
+      </view>
+    </navigator>
+  </view>
+</view>
+
+  
