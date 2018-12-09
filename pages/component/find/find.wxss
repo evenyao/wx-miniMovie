@@ -60,3 +60,13 @@
 .item .detail .score {
   color: #ff5722;
 }
+
+.warn {
+  text-align: center;
+  font-size: 28rpx;
+  padding: 30rpx 0;
+  color: #999;
+}
+.cleanbox {
+  padding: 60rpx;
+}

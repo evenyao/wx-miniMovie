@@ -58,6 +58,7 @@ Component({
           content_waiting_show: false,
         })
       }
+      let mainMovieList
       let that = this;
       wx.request({
         url: 'https://douban.uieee.com/v2/movie/top250',
@@ -65,19 +66,33 @@ Component({
         header: { 'content-type': 'application/xml' },
         data: {
           start: 0,    // 从头请求
-          count: 10    // 每次请求的数目
+          count: 30    // 每次请求的数目
         },
         success: function(res) {
           console.log(res)
           let list = res.data.subjects
           if (res.statusCode == 200) {
             console.log(list)
-            let listDetailValue = JSON.stringify(list)  // JSON 格式化
-            that.setData({
-              dataList: list,
-              listDetailValue,  // 传递给详情页的值
-              content_waiting_show: true,
-              count: 11  // 增加数目
+            // setStorage 本地存储方式拿数据
+            wx.setStorage({
+              key: 'mainMovieList',
+              data: list,
+              success: function(res){
+                console.log('异步缓存成功')
+              }
+            })
+            // 取数据 异步
+            wx.getStorage({
+              key: 'mainMovieList',
+              success(res) {
+                mainMovieList = res.data
+                that.setData({
+                  dataList: mainMovieList,
+                  mainMovieList,  // 传递给详情页的值
+                  content_waiting_show: true,
+                  count: 31  // 增加数目
+                })
+              }
             })
           }
         },
@@ -93,6 +108,7 @@ Component({
     // 懒加载
     scrollDown() {
       console.log('到底了')
+      let mainMovieList
       let that = this;
       if (this.data.loadFlag) {
         this.setData({
@@ -104,19 +120,33 @@ Component({
           header: { 'content-type': 'application/xml' },
           data: {
             start: that.data.count,    // 继续请求
-            count: 10    // 每次请求的数目
+            count: 20    // 每次请求的数目
           },
           success: function(res) {
             if (res.statusCode == 200) {
               console.log(res)
               let tempData = that.data.dataList.concat(res.data.subjects);
-              let listDetailValue = JSON.stringify(tempData) // JSON 格式化
-              that.setData({
-                count: that.data.count + 11,
-                dataList: tempData,
-                listDetailValue,  // 传递给详情页的值
-                loadFlag: tempData.length >= parseInt(res.count) ? false : true,
-                pull_loading: false,
+              // setStorage 本地存储方式拿数据
+              wx.setStorage({
+                key: 'mainMovieList',
+                data: tempData,
+                success: function (res) {
+                  console.log('异步缓存成功')
+                }
+              })
+              // 取数据 异步
+              wx.getStorage({
+                key: 'mainMovieList',
+                success(res) {
+                  mainMovieList = res.data
+                  that.setData({
+                    count: that.data.count + 21,
+                    dataList: mainMovieList,
+                    mainMovieList,  // 传递给详情页的值
+                    loadFlag: tempData.length >= parseInt(res.count) ? false : true,
+                    pull_loading: false,
+                  })
+                }
               })
               console.log(that.data.dataList)
             }

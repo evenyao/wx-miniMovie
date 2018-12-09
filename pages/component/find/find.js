@@ -68,7 +68,8 @@ Component({
             that.setData({
               dataList: list,
               listDetailValue,  // 传递给详情页的值
-              loading: false
+              loading: false,
+              show_buttom: true
             })
           }
         },
