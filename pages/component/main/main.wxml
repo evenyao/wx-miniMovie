@@ -19,6 +19,6 @@
     <image src="/pages/img/loading.gif"></image>
   </view>
   <view class="loadFlagText" wx:if="{{!loadFlag}}">
-    <text class="loadFlagText">到底了~</text>
+   <view class="warn">没有更多电影啦~</view>
   </view>
 </scroll-view>

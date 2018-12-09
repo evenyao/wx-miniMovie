@@ -10,7 +10,7 @@ Component({
   properties: {
     name: {
       type: String,
-      value: 'Index'
+      value: 'Main'
     }
   },
 
@@ -21,6 +21,7 @@ Component({
     pull_loading: false,
     dataList: [],
     content_waiting_show: false,
+    maxCount: 160,
   },
 
   /* 组件声明周期函数 */
@@ -101,48 +102,55 @@ Component({
 
     // 懒加载
     scrollDown() {
-      console.log('到底了')
-      let mainMovieList
-      let that = this;
-      if (this.data.loadFlag) {
-        this.setData({
-          pull_loading: true
-        })
-        wx.request({
-          url: 'https://douban.uieee.com/v2/movie/top250',
-          method: 'GET',
-          header: { 'content-type': 'application/xml' },
-          data: {
-            start: that.data.count,    // 继续请求
-            count: 20    // 每次请求的数目
-          },
-          success: function(res) {
-            if (res.statusCode == 200) {
-              console.log(res)
-              let tempData = that.data.dataList.concat(res.data.subjects);
-              // setStorage 本地存储方式拿数据
-              wx.setStorage({
-                key: 'mainMovieList',
-                data: tempData,
-                success: function (res) {
-                  console.log('异步缓存成功')
-                }
-              })
+      if (this.data.count < this.data.maxCount) {
+        console.log('到底了')
+        let mainMovieList
+        let that = this;
+        if (this.data.loadFlag) {
+          this.setData({
+            pull_loading: true
+          })
+          wx.request({
+            url: 'https://douban.uieee.com/v2/movie/top250',
+            method: 'GET',
+            header: { 'content-type': 'application/xml' },
+            data: {
+              start: that.data.count,    // 继续请求
+              count: 20    // 每次请求的数目
+            },
+            success: function (res) {
+              if (res.statusCode == 200) {
+                console.log(res)
+                let tempData = that.data.dataList.concat(res.data.subjects);
+                // setStorage 本地存储方式拿数据
+                wx.setStorage({
+                  key: 'mainMovieList',
+                  data: tempData,
+                  success: function (res) {
+                    console.log('异步缓存成功')
+                  }
+                })
 
-              that.setData({
-                count: that.data.count + 21,
-                dataList: tempData,
-                loadFlag: tempData.length >= parseInt(res.count) ? false : true,
-                pull_loading: false,
-              })
+                that.setData({
+                  count: that.data.count + 21,
+                  dataList: tempData,
+                  loadFlag: tempData.length >= parseInt(res.count) ? false : true,
+                  pull_loading: false,
+                })
+              }
+            },
+            fail: function (err) {
+              console.log(err)
             }
-          },
-          fail: function(err) {
-            console.log(err)
-          }
-        })
+          })
+        } else {
+          return
+        }
       } else {
-        return
+        console.log('已经不能加载了')
+        this.setData({
+          loadFlag: false,
+        })
       }
     }
   }

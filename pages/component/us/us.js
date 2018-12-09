@@ -11,7 +11,7 @@ Component({
   properties: {
     name: {
       type: String,
-      value: 'Car'
+      value: 'Us'
     }
   },
 
