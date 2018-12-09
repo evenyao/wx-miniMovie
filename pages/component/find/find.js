@@ -67,7 +67,7 @@ Component({
             console.log(list)
             that.setData({
               dataList: list,
-              listDetailValue,  // 传递给详情页的值
+              listDetailValue,  
               loading: false,
               show_buttom: true
             })

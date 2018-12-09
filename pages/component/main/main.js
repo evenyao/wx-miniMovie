@@ -38,6 +38,7 @@ Component({
       wx.showLoading({
         title: '加载中',
       })
+      wx.clearStorage()
       //初始化
       this.getMainData(true)
     },
@@ -73,7 +74,7 @@ Component({
           let list = res.data.subjects
           if (res.statusCode == 200) {
             console.log(list)
-            // setStorage 本地存储方式拿数据
+            // setStorage 本地存储方式存数据
             wx.setStorage({
               key: 'mainMovieList',
               data: list,

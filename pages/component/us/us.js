@@ -42,6 +42,7 @@ Component({
   /* 组件的方法列表 */
   methods: {
     getUsData(){
+      let usMovieList
       let that = this;
       wx.request({
         url: 'https://douban.uieee.com/v2/movie/us_box',
@@ -50,12 +51,26 @@ Component({
         success: function (res) {
           console.log(res)
           let list = res.data.subjects
-          let listDetailValue = JSON.stringify(list)  // JSON 格式化
           if (res.statusCode == 200) {
             console.log(list)
-            that.setData({
-              dataList: list,
-              listDetailValue,  // 传递给详情页的值
+            // setStorage 本地存储方式存数据
+            wx.setStorage({
+              key: 'usMovieList',
+              data: list,
+              success: function (res) {
+                console.log('异步缓存成功')
+              }
+            })
+            // 取数据 异步
+            wx.getStorage({
+              key: 'usMovieList',
+              success(res) {
+                usMovieList = res.data
+                that.setData({
+                  dataList: usMovieList,
+                  usMovieList,  
+                })
+              }
             })
           }
         },

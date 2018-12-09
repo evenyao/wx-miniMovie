@@ -3,7 +3,7 @@
 </view>
 <view class="item" wx:for="{{dataList}}" wx:key="{{item}}">
   <!-- <navigator class="link" url="/pages/link/link?url={{item.subject.alt}}"> -->
-  <navigator class="link" url="/pages/detail/detail?us=us&info={{listDetailValue}}&id={{index}}">
+  <navigator class="link" url="/pages/detail/detail?us=us&id={{index}}">
     <view class="cover">
       <image class="img" src="{{item.subject.images.small}}" alt="cover"></image>
     </view>

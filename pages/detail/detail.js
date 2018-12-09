@@ -19,27 +19,45 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 接收首页传递过来的值
-    if (options.main) {
-      let info = JSON.parse(options.info)
-      let id = options.id
-      this.setData({
-        info,
-        id,
-        main: 1,
-      })
-    }
-    // 接收北美页传递过来的值
-    if (options.us) {
-      let dataInfo = JSON.parse(options.info)
-      let id = options.id
-      let info = dataInfo[id].subject
-      this.setData({
-        info,
-        id,
-        us: 1,
-      })
-    }
+    let that = this
+    // 读首页 storage 数据
+    wx.getStorage({
+      key: 'mainMovieList',
+      success: function(res) {
+        let info = res.data
+        // 接收首页传值
+        if (options.main) {
+          let id = options.id
+          that.setData({
+            info,
+            id,
+            main: 1,
+          })
+        }
+      },
+    })
+
+    // 读北美页 storage 数据
+    wx.getStorage({
+      key: 'usMovieList',
+      success: function (res) {
+        let info = res.data
+        // 接收北美页传值
+        if (options.us) {
+          let id = options.id
+          let infoUs = info[id].subject
+          that.setData({
+            info: infoUs,
+            id,
+            us: 1,
+          })
+          //console.log(that.data.info)
+          //console.log(that.data.id)
+        }
+      },
+    })
+
+
     //
     if (options.find) {
       let info = JSON.parse(options.info)
@@ -50,8 +68,6 @@ Page({
         find: 1,
       })
     }
-    console.log(this.data.info)
-    console.log(this.data.id)
   },
 
   /**
