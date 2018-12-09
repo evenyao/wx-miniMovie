@@ -74,25 +74,18 @@ Component({
           let list = res.data.subjects
           if (res.statusCode == 200) {
             console.log(list)
+            that.setData({
+              dataList: list,
+              content_waiting_show: true,
+              count: 31  // 增加数目
+            })
+
             // setStorage 本地存储方式存数据
             wx.setStorage({
               key: 'mainMovieList',
               data: list,
               success: function(res){
                 console.log('异步缓存成功')
-              }
-            })
-            // 取数据 异步
-            wx.getStorage({
-              key: 'mainMovieList',
-              success(res) {
-                mainMovieList = res.data
-                that.setData({
-                  dataList: mainMovieList,
-                  mainMovieList,  // 传递给详情页的值
-                  content_waiting_show: true,
-                  count: 31  // 增加数目
-                })
               }
             })
           }
@@ -135,21 +128,13 @@ Component({
                   console.log('异步缓存成功')
                 }
               })
-              // 取数据 异步
-              wx.getStorage({
-                key: 'mainMovieList',
-                success(res) {
-                  mainMovieList = res.data
-                  that.setData({
-                    count: that.data.count + 21,
-                    dataList: mainMovieList,
-                    mainMovieList,  // 传递给详情页的值
-                    loadFlag: tempData.length >= parseInt(res.count) ? false : true,
-                    pull_loading: false,
-                  })
-                }
+
+              that.setData({
+                count: that.data.count + 21,
+                dataList: tempData,
+                loadFlag: tempData.length >= parseInt(res.count) ? false : true,
+                pull_loading: false,
               })
-              console.log(that.data.dataList)
             }
           },
           fail: function(err) {

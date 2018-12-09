@@ -61,16 +61,8 @@ Component({
                 console.log('异步缓存成功')
               }
             })
-            // 取数据 异步
-            wx.getStorage({
-              key: 'usMovieList',
-              success(res) {
-                usMovieList = res.data
-                that.setData({
-                  dataList: usMovieList,
-                  usMovieList,  
-                })
-              }
+            that.setData({
+              dataList: list,
             })
           }
         },
