@@ -69,15 +69,6 @@ Component({
               loading: false,
               show_buttom: true
             })
-
-            // setStorage 本地存储方式存数据
-            wx.setStorage({
-              key: 'searchMovieList',
-              data: list,
-              success: function (res) {
-                console.log('异步缓存成功')
-              }
-            })
           }
         },
         fail: function (err) {

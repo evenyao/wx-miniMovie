@@ -9,8 +9,7 @@
 
 <view class="search_result">
   <view class="item" wx:for="{{dataList}}" wx:key="{{item}}">
-    <!-- <navigator class="link" url="/pages/link/link?url={{item.alt}}"> -->
-    <navigator class="link" url="/pages/detail/detail?find=find&info={{listDetailValue}}&id={{index}}">
+    <navigator class="link" url="/pages/detail/detail?find=find&id={{dataList[index].id}}">
       <view class="cover">
         <image class="img" src="{{item.images.small}}" alt="cover"></image>
       </view>

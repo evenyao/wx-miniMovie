@@ -1,8 +1,5 @@
 // pages/detail/detail.js
-
-var main
-var us
-var find
+var judgeIndex = 0;
 
 Page({
 
@@ -10,9 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    main,
-    us,
-    find
+    showPage: false,
+    showAll: false,
   },
 
   /**
@@ -20,61 +16,50 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    // 读首页 storage 数据
-    wx.getStorage({
-      key: 'mainMovieList',
-      success: function(res) {
-        let info = res.data
-        // 接收首页传值
-        if (options.main) {
-          let id = options.id
-          that.setData({
-            info,
-            id,
-            main: 1,
-          })
-        }
-      },
+    let id = options.id
+    that.setData({
+      id,
     })
-
-    // 读北美页 storage 数据
-    wx.getStorage({
-      key: 'usMovieList',
-      success: function (res) {
-        let info = res.data
-        // 接收北美页传值
-        if (options.us) {
-          let id = options.id
-          let infoUs = info[id].subject
-          that.setData({
-            info: infoUs,
-            id,
-            us: 1,
-          })
-          //console.log(that.data.info)
-          //console.log(that.data.id)
-        }
-      },
-    })
-
-    // 读首页 storage 数据
-    wx.getStorage({
-      key: 'searchMovieList',
-      success: function (res) {
-        let info = res.data
-        // 接收首页传值
-        if (options.find) {
-          let id = options.id
-          that.setData({
-            info,
-            id,
-            find: 1,
-          })
-        }
-      },
-    })
-
+    console.log(that.data.id)
+    that.getStoryInfo()
   },
+
+  // 请求电影详情
+  getStoryInfo: function () {
+    let that = this;
+    let id = that.data.id
+    wx.request({
+      url: 'https://douban.uieee.com/v2/movie/subject/' + id,
+      method: 'GET',
+      header: { 'content-type': 'application/xml' },
+      success: function (res) {
+        let detailInfo = res.data
+        console.log(detailInfo)
+        that.setData({
+          detailInfo,
+          showPage: true,
+        })
+      },
+      fail: function (err) {
+        console.log(err)
+      }
+    })
+    console.log('详情')
+  },
+
+  showAll() {
+    console.log(this.data.showAll)
+    if (this.data.showAll == false) {
+      this.setData({
+        showAll: true
+      })
+    } else {
+      this.setData({
+        showAll: false
+      })
+    }
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -39,7 +39,6 @@ Component({
       wx.showLoading({
         title: '加载中',
       })
-      wx.clearStorage()
       //初始化
       this.getMainData(true)
     },
@@ -80,15 +79,6 @@ Component({
               content_waiting_show: true,
               count: 31  // 增加数目
             })
-
-            // setStorage 本地存储方式存数据
-            wx.setStorage({
-              key: 'mainMovieList',
-              data: list,
-              success: function(res){
-                console.log('异步缓存成功')
-              }
-            })
           }
         },
         fail: function(err) {
@@ -122,15 +112,6 @@ Component({
               if (res.statusCode == 200) {
                 console.log(res)
                 let tempData = that.data.dataList.concat(res.data.subjects);
-                // setStorage 本地存储方式拿数据
-                wx.setStorage({
-                  key: 'mainMovieList',
-                  data: tempData,
-                  success: function (res) {
-                    console.log('异步缓存成功')
-                  }
-                })
-
                 that.setData({
                   count: that.data.count + 21,
                   dataList: tempData,

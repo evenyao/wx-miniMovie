@@ -53,14 +53,6 @@ Component({
           let list = res.data.subjects
           if (res.statusCode == 200) {
             console.log(list)
-            // setStorage 本地存储方式存数据
-            wx.setStorage({
-              key: 'usMovieList',
-              data: list,
-              success: function (res) {
-                console.log('异步缓存成功')
-              }
-            })
             that.setData({
               dataList: list,
             })

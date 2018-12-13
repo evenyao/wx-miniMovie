@@ -57,3 +57,88 @@
 .cover {
   flex: 1;
 }
+
+.story {
+  font-size: 24rpx;
+  margin: 10rpx 30rpx 0rpx 30rpx;
+}
+
+.block-title {
+  font-size: 36rpx;
+  margin-bottom: 10rpx;
+}
+.showbutton {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30rpx;
+  font-size: 24rpx;
+  color: #999;
+  padding: 10rpx;
+}
+
+.comments-item {
+  display: flex;
+  background: #FFFFFF;
+  margin: 0 30rpx;
+  height: 210rpx;
+  margin-bottom: 30rpx;
+  border-radius: 10rpx;
+  box-shadow: 0rpx 0rpx 15rpx 0px rgba(44,49,140,0.31);
+}
+.userimg {
+  border-radius: 10rpx;
+  height: 60rpx;
+  width: 60rpx;
+  margin: 30rpx;
+}
+.user-comments {
+  font-size: 24rpx;
+  color: #292929;
+  display: -webkit-box; 
+  overflow: hidden; 
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 2;
+  width: 530rpx;
+  height: 110rpx;
+  /* border: 1px solid red; */
+}
+.comments-title {
+  margin-left: 30rpx;
+  margin-bottom: 15rpx;
+}
+.comments-info {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid pink; */
+}
+.userid {
+  font-size: 24rpx;
+  color: #292929;
+  vertical-align: middle;
+  /* border: 1px solid blue; */
+}
+.icon {
+  width: 25rpx;
+  height: 25rpx;
+  vertical-align: middle;
+  margin-left: 10rpx;
+  /* border: 1px solid blue; */
+}
+.whosay { 
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;
+}
+.comments .stars-point {
+  display: flex;
+  position: relative;
+  vertical-align: middle;
+  margin-top: 20rpx;
+  margin-bottom: 30rpx;
+}
+.comments .star {
+  width: 20rpx;
+  height: 20rpx;
+}
