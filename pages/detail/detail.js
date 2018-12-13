@@ -34,10 +34,15 @@ Page({
       header: { 'content-type': 'application/xml' },
       success: function (res) {
         let detailInfo = res.data
+        let videoInfo = detailInfo.trailer_urls
+        let imgInfo = detailInfo.trailers
+        console.log(videoInfo)
         console.log(detailInfo)
+        console.log(imgInfo)
         that.setData({
           detailInfo,
           showPage: true,
+          videoInfo
         })
       },
       fail: function (err) {

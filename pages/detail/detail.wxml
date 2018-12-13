@@ -47,30 +47,43 @@
     </view>
   </view>
 
-  <view class="comments-title block-title">热门评论</view>
-  <swiper id="swiper" class="comments" autoplay="true" style="height:{{detailInfo.popular_comments.length >1 ? '500rpx' : '250rpx'}}" circular="true" vertical="true" interval="5000" duration="600" display-multiple-items="{{detailInfo.popular_comments.length > 1 ? 2 : 1}}"> 
-    <swiper-item wx:for="{{detailInfo.popular_comments}}" wx:key="item">
-      <view class="comments-item">
-        <image class="userimg" src="{{item.author.avatar}}"></image>
-        <view class="comments-info">
-          <view class="whosay">
-            <text class="userid">{{item.author.uid}}</text>
-            <image class="icon" src="/pages/img/comments.png"></image>
-          </view>
-          <text class="user-comments">{{item.content}}</text>
-          <view class="stars-point">
-            <template is="zerostar" wx:if="{{item.rating.value == 0}}"></template>
-            <template is="onestar"  wx:if="{{item.rating.value == 1}}"></template>  
-            <template is="twostar" wx:if="{{item.rating.value == 2}}"></template>  
-            <template is="threestar" wx:if="{{item.rating.value == 3}}"></template>  
-            <template is="fourstar" wx:if="{{item.rating.value == 4}}"></template>
-            <template is="fivestar" wx:if="{{item.rating.value == 5}}"></template>      
+  <view class="comments-wrapper">
+    <view class="comments-title block-title">热门评论</view>
+    <swiper id="swiper" class="comments" autoplay="true" style="height:{{detailInfo.popular_comments.length >1 ? '480rpx' : '240rpx'}}" circular="true" vertical="true" interval="5000" duration="600" display-multiple-items="{{detailInfo.popular_comments.length > 1 ? 2 : 1}}"> 
+      <swiper-item wx:for="{{detailInfo.popular_comments}}" wx:key="item">
+        <view class="comments-item">
+          <image class="userimg" src="{{item.author.avatar}}"></image>
+          <view class="comments-info">
+            <view class="whosay">
+              <text class="userid">{{item.author.uid}}</text>
+              <image class="icon" src="/pages/img/comments.png"></image>
+            </view>
+            <text class="user-comments">{{item.content}}</text>
+            <view class="stars-point">
+              <template is="zerostar" wx:if="{{item.rating.value == 0}}"></template>
+              <template is="onestar"  wx:if="{{item.rating.value == 1}}"></template>  
+              <template is="twostar" wx:if="{{item.rating.value == 2}}"></template>  
+              <template is="threestar" wx:if="{{item.rating.value == 3}}"></template>  
+              <template is="fourstar" wx:if="{{item.rating.value == 4}}"></template>
+              <template is="fivestar" wx:if="{{item.rating.value == 5}}"></template>      
+            </view>
           </view>
         </view>
-      </view>
-    </swiper-item>
-  </swiper>
+      </swiper-item>
+    </swiper>
+  </view>
 
+  <view class="videos-wrapper">
+    <view class="videos block-title">相关片段</view>
+    <view class="videos-list">
+      <!-- web-view -->
+      <navigator class="video-view" wx:for="{{detailInfo.trailers}}" wx:key="index" url="/pages/link/link?url={{item.resource_url}}" >
+        <image class="play-icon" src="/pages/img/play.png"></image>
+        <view class="glass-background"></view>
+        <image class="video-img" wx:key="index" src="{{item.medium}}"></image>
+      </navigator>
+    </view>
+  </view>
 </view>
 
 

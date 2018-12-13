@@ -66,6 +66,8 @@
 .block-title {
   font-size: 36rpx;
   margin-bottom: 10rpx;
+  padding-left: 15rpx;
+  border-left: 5px solid #1296db;
 }
 .showbutton {
   display: flex;
@@ -104,7 +106,7 @@
 }
 .comments-title {
   margin-left: 30rpx;
-  margin-bottom: 15rpx;
+  margin-bottom: 20rpx;
 }
 .comments-info {
   display: flex;
@@ -141,4 +143,56 @@
 .comments .star {
   width: 20rpx;
   height: 20rpx;
+}
+
+.videos {
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+  margin-bottom: 20rpx;
+}
+.videos-list {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30rpx;
+  flex-wrap: wrap;
+}
+.video-view {
+  width: 320rpx;
+  height: 220rpx;
+  margin-right: 41rpx;
+  margin-bottom: 30rpx;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0rpx 0rpx 15rpx 0px rgba(44,49,140,0.31);
+}
+
+.video-img {
+  width: 320rpx;
+  height: 220rpx;
+  border-radius: 10px;
+}
+
+.play-icon {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+}
+
+.glass-background {
+  width: 320rpx;
+  height: 220rpx;
+  background-color: black;
+  opacity: 0.3; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+  border-radius: 10px;
 }
