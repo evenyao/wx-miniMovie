@@ -14,11 +14,11 @@ Page({
         "selectedIconPath": "/pages/img/us1.png",
         "text": "北美"
       },
-      // {
-      //   "iconPath": "/pages/img/find2.png",
-      //   "selectedIconPath": "/pages/img/find1.png",
-      //   "text": "查找"
-      // }
+      {
+        "iconPath": "/pages/img/find2.png",
+        "selectedIconPath": "/pages/img/find1.png",
+        "text": "查找"
+      }
     ]
   },
   swichNav: function (e) {

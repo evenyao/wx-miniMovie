@@ -57,17 +57,23 @@ Page({
       },
     })
 
+    // 读首页 storage 数据
+    wx.getStorage({
+      key: 'searchMovieList',
+      success: function (res) {
+        let info = res.data
+        // 接收首页传值
+        if (options.find) {
+          let id = options.id
+          that.setData({
+            info,
+            id,
+            find: 1,
+          })
+        }
+      },
+    })
 
-    //
-    if (options.find) {
-      let info = JSON.parse(options.info)
-      let id = options.id
-      this.setData({
-        info,
-        id,
-        find: 1,
-      })
-    }
   },
 
   /**

@@ -62,14 +62,21 @@ Component({
         success: function (res) {
           console.log(res)
           let list = res.data.subjects
-          let listDetailValue = JSON.stringify(list)  // JSON 格式化
           if (res.statusCode == 200) {
             console.log(list)
             that.setData({
               dataList: list,
-              listDetailValue,  
               loading: false,
               show_buttom: true
+            })
+
+            // setStorage 本地存储方式存数据
+            wx.setStorage({
+              key: 'searchMovieList',
+              data: list,
+              success: function (res) {
+                console.log('异步缓存成功')
+              }
             })
           }
         },
