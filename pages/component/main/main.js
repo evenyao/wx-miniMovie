@@ -21,7 +21,8 @@ Component({
     pull_loading: false,
     dataList: [],
     content_waiting_show: false,
-    maxCount: 160,
+    canRequest: true,
+    maxCount: 250,
   },
 
   /* 组件声明周期函数 */
@@ -92,46 +93,52 @@ Component({
 
     // 懒加载
     scrollDown() {
-      if (this.data.count < this.data.maxCount) {
-        console.log('到底了')
-        let mainMovieList
-        let that = this;
-        if (this.data.loadFlag) {
+      if (this.data.canRequest) {
+        if (this.data.count < this.data.maxCount) {
           this.setData({
-            pull_loading: true
+            canRequest: false
           })
-          wx.request({
-            url: 'https://douban.uieee.com/v2/movie/top250',
-            method: 'GET',
-            header: { 'content-type': 'application/xml' },
-            data: {
-              start: that.data.count,    // 继续请求
-              count: 20    // 每次请求的数目
-            },
-            success: function (res) {
-              if (res.statusCode == 200) {
-                console.log(res)
-                let tempData = that.data.dataList.concat(res.data.subjects);
-                that.setData({
-                  count: that.data.count + 21,
-                  dataList: tempData,
-                  loadFlag: tempData.length >= parseInt(res.count) ? false : true,
-                  pull_loading: false,
-                })
+          console.log('到底了')
+          let mainMovieList
+          let that = this;
+          if (this.data.loadFlag) {
+            this.setData({
+              pull_loading: true
+            })
+            wx.request({
+              url: 'https://douban.uieee.com/v2/movie/top250',
+              method: 'GET',
+              header: { 'content-type': 'application/xml' },
+              data: {
+                start: that.data.count,    // 继续请求
+                count: 20,    // 每次请求的数目
+              },
+              success: function (res) {
+                if (res.statusCode == 200) {
+                  console.log(res)
+                  let tempData = that.data.dataList.concat(res.data.subjects);
+                  that.setData({
+                    count: that.data.count + 21,
+                    dataList: tempData,
+                    loadFlag: tempData.length >= parseInt(res.count) ? false : true,
+                    pull_loading: false,
+                    canRequest: true
+                  })
+                }
+              },
+              fail: function (err) {
+                console.log(err)
               }
-            },
-            fail: function (err) {
-              console.log(err)
-            }
-          })
+            })
+          } else {
+            return
+          }
         } else {
-          return
+          console.log('已经不能加载了')
+          this.setData({
+            loadFlag: false,
+          })
         }
-      } else {
-        console.log('已经不能加载了')
-        this.setData({
-          loadFlag: false,
-        })
       }
     }
   }
