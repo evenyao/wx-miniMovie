@@ -9,7 +9,26 @@
 - `template` 模板
 - `swiper` 标签
 
-由于 豆瓣开发者 `Api` 已经关闭，并且小程序获取该 `Api` 会报 `403` 错误。因此使用 `https://douban.uieee.com/` 镜像代理地址。但 `搜索` 接口存在相应问题，所以只完成了 `热榜` 与 `北美` 两个页面。
+## 关于接口
+~~由于 豆瓣开发者 `Api` 已经关闭，并且小程序获取该 `Api` 会报 `403` 错误。因此使用 `https://douban.uieee.com/` 镜像代理地址。但 `搜索` 接口存在相应问题，所以只完成了 `热榜` 与 `北美` 两个页面。~~
+
+> 2018.12.14
+由于豆瓣 `api` 限制了小程序直接 `request` 进行请求。
+可使用 `nginx` 代理中转的方式将豆瓣的 `api` 通过其他服务器进行中专代理即可。
+```
+location /v2/ {
+proxy_store off;
+proxy_redirect off;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header Referer 'no-referrer-when-downgrade';
+proxy_set_header User-Agent 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36';
+proxy_connect_timeout 600;
+proxy_read_timeout 600;
+proxy_send_timeout 600;
+proxy_pass https://api.douban.com/v2/;
+}
+```
 
 ## 历史
 > 2018.12.13
