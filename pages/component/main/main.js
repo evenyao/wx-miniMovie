@@ -1,3 +1,5 @@
+let app = getApp()
+var requestUrl = app.globalData.requestUrl
 
 Component({
 
@@ -63,7 +65,7 @@ Component({
       let mainMovieList
       let that = this;
       wx.request({
-        url: 'https://douban.uieee.com/v2/movie/top250',
+        url: requestUrl + '/v2/movie/top250',
         method: 'GET',
         header: { 'content-type': 'application/xml' },
         data: {
@@ -106,7 +108,7 @@ Component({
               pull_loading: true
             })
             wx.request({
-              url: 'https://douban.uieee.com/v2/movie/top250',
+              url: requestUrl + '/v2/movie/top250',
               method: 'GET',
               header: { 'content-type': 'application/xml' },
               data: {

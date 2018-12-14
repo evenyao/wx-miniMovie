@@ -1,4 +1,6 @@
 // pages/detail/detail.js
+let app = getApp()
+var requestUrl = app.globalData.requestUrl
 var judgeIndex = 0;
 
 Page({
@@ -29,7 +31,7 @@ Page({
     let that = this;
     let id = that.data.id
     wx.request({
-      url: 'https://douban.uieee.com/v2/movie/subject/' + id,
+      url: requestUrl + '/v2/movie/subject/' + id,
       method: 'GET',
       header: { 'content-type': 'application/xml' },
       success: function (res) {

@@ -1,4 +1,5 @@
-var app = getApp();
+let app = getApp()
+var requestUrl = app.globalData.requestUrl
 
 Component({
   
@@ -45,7 +46,7 @@ Component({
       let usMovieList
       let that = this;
       wx.request({
-        url: 'https://douban.uieee.com/v2/movie/us_box',
+        url: requestUrl + '/v2/movie/us_box',
         method: 'GET',
         header: { 'content-type': 'application/xml' },
         success: function (res) {

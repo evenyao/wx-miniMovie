@@ -1,4 +1,5 @@
-var app = getApp();
+let app = getApp()
+var requestUrl = app.globalData.requestUrl
 
 Component({
 
@@ -53,7 +54,7 @@ Component({
       let keyword = that.data.search_value
       console.log(keyword)
       wx.request({
-        url: 'https://douban.uieee.com/v2/movie/search',
+        url: requestUrl + '/v2/movie/search',
         method: 'GET',
         data: {
           q: keyword
