@@ -1,6 +1,7 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function (options) {
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -35,6 +36,9 @@ App({
   },
   globalData: {
     userInfo: null,
-    requestUrl: 'https://douban.uieee.com'
+    requestUrl: 'https://douban.uieee.com',  // 后端接口
+    requestUrl2: '',  // 后端接口
+    currentCity: '',
+    mapkey: ''  // 地图 key
   }
 })

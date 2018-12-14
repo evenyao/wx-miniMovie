@@ -10,6 +10,7 @@ page {
   display: flex;
   position: fixed;
   bottom: 0;
+  z-index: 19999;
 }
 
 .tab-list {

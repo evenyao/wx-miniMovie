@@ -101,7 +101,7 @@
   -webkit-box-orient: vertical; 
   -webkit-line-clamp: 2;
   width: 530rpx;
-  height: 110rpx;
+  height: 90rpx;
   /* border: 1px solid red; */
 }
 .comments-title {

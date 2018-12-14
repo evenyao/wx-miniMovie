@@ -1,6 +1,7 @@
-let app = getApp()
+const app = getApp()
 var requestUrl = app.globalData.requestUrl
-var requestUrl2 = app.globalData.requestUrl2
+var currentCity = app.globalData.currentCity
+
 Component({
 
   /* 开启全局样式设置 */
@@ -12,20 +13,30 @@ Component({
   properties: {
     name: {
       type: String,
-      value: 'Find'
+      value: 'Hot'
     }
   },
 
   /* 组件的初始数据 */
   data: {
-    search_value: '',
-    loading: false,
+    dataList: [],
+    currentCity: '',
+    cityshow: false,
+    show_loading: true,  // 加载 gif 显示
+    show_buttom: false   // 底部 显示
   },
 
   /* 组件声明周期函数 */
   lifetimes: {
     attached: function () {
-
+      this.setData({
+        currentCity: app.globalData.currentCity,
+      })
+      this.getUsData()
+      this.setData({
+        show_loading: false,
+        show_buttom: true
+      })
     },
     moved: function () {
 
@@ -37,27 +48,15 @@ Component({
 
   /* 组件的方法列表 */
   methods: {
-    // 监听 input 输入
-    changeValue: function (event) {
+    getUsData() {
+      let usMovieList
       let that = this;
-      var search = event.detail.value;
-      that.setData({
-        search_value: search
-      })
-    },
-    // 搜索请求
-    search() {
-      let that = this;
-      that.setData({
-        loading: true,
-      })
-      let keyword = that.data.search_value
-      console.log(keyword)
       wx.request({
-        url: requestUrl2 + '/v2/movie/search',
+        url: requestUrl + '/v2/movie/in_theaters',
         method: 'GET',
         data: {
-          q: keyword
+          count: 50,
+          city: app.globalData.currentCity // 城市
         },
         header: { 'content-type': 'application/xml' },
         success: function (res) {
@@ -67,8 +66,6 @@ Component({
             console.log(list)
             that.setData({
               dataList: list,
-              loading: false,
-              show_buttom: true
             })
           }
         },
@@ -76,6 +73,13 @@ Component({
           console.log(err)
         }
       })
+    },
+    mycity() {
+      console.log(app.globalData.currentCity)
+      this.setData({
+        cityshow: true
+      })
+      this.getUsData()
     }
   }
 

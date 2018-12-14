@@ -73,7 +73,7 @@
     </swiper>
   </view>
 
-  <view class="videos-wrapper">
+  <view class="videos-wrapper" wx:if="{{detailInfo.trailers.length > 0}}">
     <view class="videos block-title">相关片段</view>
     <view class="videos-list">
       <!-- web-view -->

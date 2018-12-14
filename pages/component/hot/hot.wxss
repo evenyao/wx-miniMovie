@@ -1,0 +1,77 @@
+.movie-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 60rpx;
+  position: relative;
+  left: 5rpx;
+  margin-top: 60rpx;
+}
+
+.movie-item {
+  display: flex;
+  position: relative;
+  width: 270rpx;
+  height: 400rpx;
+  margin-right: 70rpx;
+  margin-bottom: 120rpx;
+  /* border: 1px solid red; */
+  box-shadow: 0rpx 5rpx 15rpx 5rpx rgba(44,49,140,0.31);
+}
+
+.movie-cover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+.stars-point {
+  display: flex;
+  position: absolute;
+  bottom: -70rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  vertical-align: middle;
+  margin-top: 20rpx;
+  margin-bottom: 30rpx;
+}
+.star {
+  width: 20rpx;
+  height: 20rpx;
+}
+
+.movie-name {
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 270rpx;
+  text-align: center;
+  background: black;
+  z-index: 1;
+  color: white;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  padding: 10rpx 0;
+}
+.movie-name-2 {
+  position: absolute;
+  bottom: -80rpx;
+  text-align: center;
+  width: 270rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 24rpx;
+}
+
+.warn {
+  text-align: center;
+  font-size: 28rpx;
+  padding: 30rpx 0;
+  color: #999;
+}
+.cleanbox {
+  padding: 60rpx;
+}
