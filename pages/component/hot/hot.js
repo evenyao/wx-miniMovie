@@ -14,6 +14,11 @@ Component({
     name: {
       type: String,
       value: 'Hot'
+    },
+    // index.js 传值
+    paramCityToHot: {   
+      type: String,  //类型
+      value: 'default value'  //默认值
     }
   },
 
@@ -22,6 +27,7 @@ Component({
     dataList: [],
     currentCity: '',
     cityshow: false,
+    cityshowButton: true,
     show_loading: true,  // 加载 gif 显示
     show_buttom: false   // 底部 显示
   },
@@ -29,11 +35,11 @@ Component({
   /* 组件声明周期函数 */
   lifetimes: {
     attached: function () {
-      this.setData({
-        currentCity: app.globalData.currentCity,
-      })
-      this.getUsData()
-      this.setData({
+      let that = this
+      setTimeout(function (){
+        that.getUsData()
+      },300)
+      that.setData({
         show_loading: false,
         show_buttom: true
       })
@@ -56,7 +62,7 @@ Component({
         method: 'GET',
         data: {
           count: 50,
-          city: app.globalData.currentCity // 城市
+          city: this.properties.paramCityToHot // 城市
         },
         header: { 'content-type': 'application/xml' },
         success: function (res) {
@@ -71,15 +77,26 @@ Component({
         },
         fail: function (err) {
           console.log(err)
+        },
+        complete: function () {
+          wx.hideLoading()
         }
       })
     },
     mycity() {
-      console.log(app.globalData.currentCity)
-      this.setData({
-        cityshow: true
-      })
-      this.getUsData()
+      if (this.data.cityshowButton) {
+        wx.showLoading({
+          title: '正在加载...'
+        })
+        console.log(app.globalData.currentCity)
+        this.setData({
+          cityshow: true,
+          cityshowButton: false
+        })
+        this.getUsData()
+      } else {
+        console.log('已经请求到列表')
+      }
     }
   }
 

@@ -36,9 +36,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    requestUrl: 'https://douban.uieee.com',  // 后端接口
-    requestUrl2: '',  // 后端接口
+    requestUrl: 'https://douban.uieee.com',
     currentCity: '',
-    mapkey: ''  // 地图 key
+    mapkey: ''
   }
 })

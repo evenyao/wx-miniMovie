@@ -1,5 +1,5 @@
 <view class="waiting_img" wx:if="{{show_loading}}"></view>
-<view bindtap="mycity">我的城市<text wx:if="{{cityshow}}">{{currentCity}}</text>正在热映</view>
+<view class="city-title" bindtap="mycity"><text wx:if="{{!cityshow}}">点击查看我的城市</text> <text wx:if="{{cityshow}}">{{paramCityToHot}}</text> 正在热映</view>
 <view class="movie-wrapper"> 
   <view class="movie-item" wx:for="{{dataList}}" wx:key="item">
     <image class="movie-cover" src="{{item.images.small}}"></image>

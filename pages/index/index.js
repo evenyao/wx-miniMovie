@@ -5,6 +5,7 @@ var mapkey = app.globalData.mapkey
 Page({
   data: {
     currentCity: '',
+    paramCityToHot: '',  // components 传值
     currentTab: 0,
     items: [
       {
@@ -72,7 +73,10 @@ Page({
         var city = res.data.result.addressComponent.city;
         var _city = city.replace('市', '')  // 格式化
         getApp().globalData.currentCity = _city
-        page.setData({ currentCity: _city });
+        page.setData({ 
+          currentCity: _city,
+          paramCityToHot: _city  // 给 component 传值
+          });
         
       },
       fail: function () {
