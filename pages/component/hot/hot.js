@@ -35,15 +35,16 @@ Component({
   /* 组件声明周期函数 */
   lifetimes: {
     attached: function () {
-      let that = this
-      setTimeout(function (){
-        that.getUsData()
-      },300)
-      that.setData({
+      this.getUsData()
+      this.setData({
         show_loading: false,
         show_buttom: true
       })
     },
+    // 组件挂载后执行
+    ready: function () {
+
+    }, 
     moved: function () {
 
     },

@@ -1,7 +1,7 @@
 <view class="waiting_img" wx:if="{{show_loading}}"></view>
 <view class="city-title" bindtap="mycity"><text wx:if="{{!cityshow}}">点击查看我的城市</text> <text wx:if="{{cityshow}}">{{paramCityToHot}}</text> 正在热映</view>
-<view class="movie-wrapper"> 
-  <view class="movie-item" wx:for="{{dataList}}" wx:key="item">
+<view class="movie-wrapper">
+  <navigator class="movie-item" wx:for="{{dataList}}" wx:key="item" url="/pages/detail/detail?id={{item.id}}">
     <image class="movie-cover" src="{{item.images.small}}"></image>
     <view class="stars-point">
       <template is="zerostar" wx:if="{{item.rating.average == 0}}"></template>
@@ -18,7 +18,7 @@
     </view>
     <!-- <view class="movie-name">{{item.title}}</view> -->
     <view class="movie-name-2">{{item.title}}</view>
-  </view>
+  </navigator>
 </view>
 <view class="warn" wx:if="{{show_buttom}}">没有更多电影啦~</view>
 <view class="cleanbox"></view>
