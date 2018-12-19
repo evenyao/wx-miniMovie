@@ -21,16 +21,16 @@
 可使用 `nginx` 代理中转的方式将豆瓣的 `api` 通过其他服务器进行中专代理即可。
 ```
 location /v2/ {
-proxy_store off;
-proxy_redirect off;
-proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-proxy_set_header X-Real-IP $remote_addr;
-proxy_set_header Referer 'no-referrer-when-downgrade';
-proxy_set_header User-Agent 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36';
-proxy_connect_timeout 600;
-proxy_read_timeout 600;
-proxy_send_timeout 600;
-proxy_pass https://api.douban.com/v2/;
+  proxy_store off;
+  proxy_redirect off;
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_set_header X-Real-IP $remote_addr;
+  proxy_set_header Referer 'no-referrer-when-downgrade';
+  proxy_set_header User-Agent 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36';
+  proxy_connect_timeout 600;
+  proxy_read_timeout 600;
+  proxy_send_timeout 600;
+  proxy_pass https://api.douban.com/v2/;
 }
 ```
 
