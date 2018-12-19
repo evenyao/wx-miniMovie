@@ -1,7 +1,10 @@
 # miniMovie
 以前使用 `jQuery` 实现过一个[移动端豆瓣电影](https://github.com/evenyao/douban-movie-mobile) `demo` ，最近把这个 `demo` 重写成了小程序版本。
 
-## 细节
+## 线上版预览体验
+![](https://evenyao-1257191344.cos.ap-chengdu.myqcloud.com/%E7%AE%80e%E7%94%B5%E5%BD%B1.jpg)
+
+## 涉及细节
 - 自定义 `tabbar`
 - 页面间使用 `onLoad` `options` 传值
 - `wx.setStorage` / `wx.getStorage` 存取数据
@@ -36,3 +39,7 @@ proxy_pass https://api.douban.com/v2/;
 由于之前一直没有发现有详情页接口，所以使用了各种各样 传参/`storage` 的方式想把首页请求到的数据传给下一页，中间遇到各式各样的问题，后来发现居然有详情页接口，就采用传参带 `id` 方式完成了详情页的接口请求，同时也完成了详情页。但搜索接口仍有问题。
 
 同时使用 `swiper` 来展现电影详情评论。
+
+> 2018.12.18
+
+详情页中的视频片段没有使用 `video` 标签进行播放，因为后端接口是豆瓣的，做了外链播放限制。后来考虑到使用 `web-view` 到外部跳转成 `h5` 页面，但由于个人小程序限制 `web-view` 添加业务域名，因此此功能暂没有想到方法来解决。
