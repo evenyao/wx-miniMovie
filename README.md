@@ -1,5 +1,6 @@
 # miniMovie
-以前使用 `jQuery` 实现过一个[移动端豆瓣电影](https://github.com/evenyao/douban-movie-mobile) `demo` ，最近把这个 `demo` 重写成了小程序版本。
+## 简介
+以前学习库的时候使用 `jQuery` 实现过一个[移动端豆瓣电影](https://github.com/evenyao/douban-movie-mobile) `demo` ，由于最近接触小程序较多。将这个 `demo` 重写成了小程序版本。其中涵盖了一些小程序的设计细节，可以作为一个简单的项目来拓展构建。
 
 ## 线上版预览体验
 ![](https://evenyao-1257191344.cos.ap-chengdu.myqcloud.com/%E7%AE%80e%E7%94%B5%E5%BD%B1.jpg)
